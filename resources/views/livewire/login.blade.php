@@ -17,7 +17,7 @@
       @csrf
       <div class="mb-3">
         <label class="form-label">Username</label>
-        <input type="text" wire:model="username" required value="{{ old('username') }}" class="form-control" />
+        <input type="text" autofocus wire:model="username" required value="{{ old('username') }}" class="form-control" />
         @error('username') <span>{{$message}}</span> @enderror
       </div>
       <div class="">

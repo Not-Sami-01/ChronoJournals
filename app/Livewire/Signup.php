@@ -26,14 +26,14 @@ class Signup extends Component
             return $this->redirect('/signup',navigate:true);
         }
         // Perform database operations to save the user
-        $checkuser = AppUsers::where('username', '=', $this->username)->first();
+        $checkuser = AppUsers::where('username', '=', strtolower($this->username))->first();
         if($checkuser){
             session()->flash('error', 'Username already exists, please choose a different one');
             return $this->redirect('/signup',navigate:true);
         }
-        $password = md5($this->password);
+        $password = $this->password;
         $user = new AppUsers();
-        $user->username = $this->username;
+        $user->username = strtolower($this->username);
         $user->password = $password;
         $user->save();
         if($user){
@@ -46,6 +46,9 @@ class Signup extends Component
     }
     public function render()
     {
+        if(checkLogin()){
+            $this->redirect('/');
+        }
         return view('livewire.signup');
         // echo 'Helo WOrld';
     }

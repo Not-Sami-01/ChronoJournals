@@ -13,11 +13,11 @@
   @endif
     <div class="container">
       <h1 class="text-center my-3">Signup to continue</h1>
-      <form class="border p-3 mb-3 rounded bg" wire:submit="save" >
+      <form class="border p-3 mb-3 rounded bg-secondary text-light" wire:submit="save" >
         {{-- <input type="hidden" wire:model="_token" value="{{ csrf_token() }}"> --}}
         <div class="mb-3">
           <label class="form-label">Username</label>
-          <input type="text" wire:model="username" value="{{ old('username') }}" class="form-control" />
+          <input type="text" autofocus wire:model="username" value="{{ old('username') }}" class="form-control" />
           @error('username')
             <span class="text-danger">{{ $message }}</span>
           @enderror
@@ -47,7 +47,7 @@
             Submit
           </button>
         </div>
-        <p class="form-text py-0 my-0 text-dark">Already have an account? <a wire:navigate class=""
+        <p class="form-text py-0 my-0 text-light">Already have an account? <a wire:navigate class="text-light"
             href="{{ url('/login') }}">Login</a></p>
 
       </form>

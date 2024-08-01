@@ -15,10 +15,12 @@ class Login extends Component
             'username' => 'required',
             'password' => 'required'
         ]);
-        $user = AppUsers::where('username', '=', $this->username)->first();
+        $username = strtolower($this->username);
+        $user = AppUsers::where('username', '=', $username)->first();
         if($user && md5($this->password) == $user->password){
-            session()->put('username', $this->username);
-            session()->put('auth_token', md5($this->username));
+            session()->put('username', $username);
+            session()->put('user_id', $user->_id);
+            session()->put('auth_token', md5($username));
             session()->flash('success', 'Logged in successfully');
             return $this->redirect('/', navigate:true);
         }
@@ -28,6 +30,9 @@ class Login extends Component
     
     public function render()
     {
+        if(checkLogin()){
+            $this->redirect('/');
+        }
         return view('livewire.login');
     }
 }

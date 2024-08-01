@@ -12,7 +12,7 @@
     </div>
   @endif
   <div wire:loading class="container">Loading</div>
-    @livewire('journals')
-    <script src="{{ asset('/js/activityDetector.js') }}" ></script>
+  @livewire('journals', ['Recyclebin' => true])
+  <script src="{{ asset('/js/activityDetector.js') }}" ></script>
 
 </div>

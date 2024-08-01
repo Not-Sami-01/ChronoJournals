@@ -1,0 +1,39 @@
+body{
+  position: relative;
+}
+.loading-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* opacity: 0.2; */
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+}
+.loading-flex{
+  height: 200px;
+  width: 200px;
+  background-color: white;
+  padding: 30px;
+  text-align: center;
+}
+.journal-index{
+float: left;
+margin: 0 10px ;
+padding: 0;
+font-weight: bold;
+}
+.card-body *{
+  font-size: smaller;
+  padding: 0;
+  margin: 0;
+}
+.card-body h1{
+  font-size: medium;
+  padding: 0;
+  margin: 0;
+}
+.loading-save{
+  background-color: lightgray;
+}
