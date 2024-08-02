@@ -24,5 +24,6 @@ Route::get('/signup', Signup::class);
 Route::get('/journal/{id?}', Journal::class)->middleware(AuthMiddleware::class)->name('journal');
 Route::get('/recyclebin', MyRecycleBin::class)->middleware(AuthMiddleware::class);
 Route::get('/', Home::class)->middleware(AuthMiddleware::class);
+Route::get('/all', Home::class)->middleware(AuthMiddleware::class);
 
 // Route::get('/admin', Admin::class);

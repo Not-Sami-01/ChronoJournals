@@ -30,7 +30,7 @@ font-weight: bold;
   margin: 0;
 }
 .card-body h1{
-  font-size: medium;
+  font-size: large !important;
   padding: 0;
   margin: 0;
 }

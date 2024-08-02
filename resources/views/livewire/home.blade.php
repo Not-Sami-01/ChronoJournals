@@ -12,7 +12,11 @@
     </div>
   @endif
   <div wire:loading class="container">Loading</div>
+  @if (Request::url() === url('/all'))
+    @livewire('journals', ['all'=>true])
+  @else
     @livewire('journals')
-    <script src="{{ asset('/js/activityDetector.js') }}" ></script>
+  @endif
+  <script src="{{ asset('/js/activityDetector.js') }}"></script>
 
 </div>

@@ -11,6 +11,9 @@
           <li class="nav-item">
             <a wire:navigate class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
+          <li class="nav-item">
+            <a wire:navigate class="nav-link active" aria-current="page" href="/all">All Journals</a>
+          </li>
           @if (Request::url() === url('/') )
           <li class="nav-item">
             <button wire:click='addJournal' class="nav-link active" aria-current="page" href="#">New Journal</button>
@@ -20,16 +23,17 @@
         </ul>
 
         @if (checkLogin() || Request::url() === url('/admin'))
-          <button id="logoutBtn" wire:click='logout' class="btn btn-danger mx-1 btn-sm" type="button">Logout</button>
-          <button class="btn btn-primary btn-sm" wire:click='refreshComponent(@json(Request::url()))'>
+          <button wire:loading.attr='disabled' id="logoutBtn" wire:click='logout' class="btn btn-danger mx-1 btn-sm" type="button">Logout</button>
+          <button wire:loading.attr='disabled' class="btn btn-primary btn-sm" wire:click='refreshComponent(@json(Request::url()))'>
             Refresh
           </button>
-          <a href="/settings" wire:navigate class="btn btn-primary mx-1 btn-sm" type="button">Settings</a>
-          <a href="/recyclebin" wire:navigate class="btn btn-outline-primary btn-sm" type="button">Recycle Bin</a>
+          {{-- <button class="btn btn-warning text-muted mx-1 btn-sm" wire:click='prevPage' type="button">Back</button> --}}
+          <a href="{{url()->previous()}}" wire:navigate class="btn btn-warning text-muted mx-1 btn-sm">Back</a>
+          <a href="/recyclebin" wire:navigate class="btn btn-outline-primary btn-sm" wire:loading.class='disabled'>Recycle Bin</a>
           <p class=" text-light m-1 fw-bold" title="username">| {{ capFirstLetter(session()->get('username')) }}</p>
         @else
-          <a href="/login" wire:navigate class="btn btn-primary mx-1 btn-sm" type="button">Login</a>
-          <a href="/signup" wire:navigate class="btn btn-primary mx-1 btn-sm" type="button">Signup</a>
+          <a href="/login" wire:navigate class="btn btn-primary mx-1 btn-sm" wire:loading.attr='disabled' type="button">Login</a>
+          <a href="/signup" wire:navigate class="btn btn-primary mx-1 btn-sm" wire:loading.attr='disabled' type="button">Signup</a>
         @endif
       </div>
     </div>

@@ -38,4 +38,10 @@ class AppJournal extends Model
     {
         return decryptJournal($value, env('MY_ENCRYPT_KEY'));
     }
+    public function getJournalDateTimeAttribute($value){
+        return convertToPakistanTime($value);
+    }
+    public function setJournalDateTimeAttribute($value){
+        $this->attributes['journal_date_time'] = convertFromPakistanTimeToUTC($value);
+    }
 }
