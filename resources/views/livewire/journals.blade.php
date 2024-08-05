@@ -1,36 +1,37 @@
 <div class="container">
+  <div class="container">
   @if ($asc === true)
-    <button wire:loading.attr='disabled' class="my-2 btn btn-primary btn-sm" wire:click='toggleAsc'>
-      Sort by Date (Descending)
+    <button wire:loading.attr='disabled' class="my-2 btn border btn-sm" wire:click='toggleAsc'>
+      Descending
     </button>
   @else
-    <button wire:loading.attr='disabled' class="my-2 btn btn-primary btn-sm" wire:click='toggleAsc'>
-      Sort by Date (Ascending)
+    <button wire:loading.attr='disabled' class="my-2 btn btn-outline-secondary btn-sm" wire:click='toggleAsc'>
+      Ascending
     </button>
   @endif
   @if (!$all)
     @if ($pagination === 10)
-      <button class="btn btn-primary btn-sm" wire:loading.attr='disabled' wire:click='setPagination(30)'>30 journals per
-        page</button>
+      <button class="btn btn-outline-secondary btn-sm" wire:loading.attr='disabled' wire:click='setPagination(30)'>Set pagination to 30 | (Current: 10)</button>
     @else
-      <button class="btn btn-primary btn-sm" wire:loading.attr='disabled' wire:click='setPagination(10)'>10 journals per
-        page</button>
+      <button class="btn btn-outline-secondary btn-sm" wire:loading.attr='disabled' wire:click='setPagination(10)'>Set pagination to 10 | (Current: 30)</button>
     @endif
   @endif
   @if (Request::url() !== url('/recyclebin'))
     <label>Search</label>
-    <input type="text" wire:model.live='search'>
+    <input type="text" wire:model.live='search' class="border border-dark">
   @endif
-  <div wire:loading class="m-2" style="float: right">
-    <div class="spinner-border text-warning mx-auto m-0 p-0" role="status"></div>
+  <div wire:loading class="my-2" style="float: right; ">
+    <div class="spinner-border text-warning mx-auto p-0" style="margin-bottom: -1px;" role="status"></div>
   </div>
+</div>
+<h4>Total results: {{count($journals)}}</h4>
   <div class="container-fluid">
     @foreach ($journals as $journal)
       <div class="">
         <div class="card my-1">
           <div class="card-header d-flex justify-content-between">
             <div class="d-inline">
-              <div class="journal-index">#{{ formatDate($journal->journal_date_time) }}</div>
+              <div class="journal-index">#{{count($journals)-($loop->index)}} - {{ formatDate($journal->journal_date_time) }}</div>
             </div>
             @if (Request::url() == url('/recyclebin'))
               <div class="d-inline">

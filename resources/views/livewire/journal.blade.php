@@ -37,12 +37,10 @@
       });
       editor.on('change', function(event) {
         val++;
-        if(val == 5){
+        if(val == 10){
           save.click();
-          console.log('clicked')
           val = 0;
         }
-        
       })
 
       function ckeditor() {

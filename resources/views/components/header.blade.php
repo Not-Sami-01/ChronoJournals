@@ -11,9 +11,11 @@
           <li class="nav-item">
             <a wire:navigate class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
+          @if (Request::url() !== url('/all'))
           <li class="nav-item">
             <a wire:navigate class="nav-link active" aria-current="page" href="/all">All Journals</a>
           </li>
+          @endif
           @if (Request::url() === url('/') )
           <li class="nav-item">
             <button wire:click='addJournal' class="nav-link active" aria-current="page" href="#">New Journal</button>
