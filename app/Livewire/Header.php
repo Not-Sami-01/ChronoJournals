@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class Header extends Component
 {
-
+    
     public function refreshComponent($url){
         $this->redirect($url, navigate:true);
     }
@@ -34,9 +34,12 @@ class Header extends Component
         session()->flush();
         return $this->redirect('/login', navigate:true);
     }
-    public function render()
-    {
-        return view('components.header');
-    }
+    
+
+public function render()
+{
+    return view('components.header');
+}
+
     
 }

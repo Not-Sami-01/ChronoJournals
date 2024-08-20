@@ -19,7 +19,7 @@ function encryptJournal($data, $key)
   $iv = openssl_random_pseudo_bytes($ivLength);
   $encryptedData = openssl_encrypt($data, $method, $key, 0, $iv);
   $result = base64_encode($iv . $encryptedData);
-  
+
   return $result;
 }
 
@@ -105,8 +105,60 @@ function convertToPakistanTime($timeString)
 }
 
 // Converts Pakistan date time to UTC date tme
-function convertFromPakistanTimeToUTC($timeString) {
+function convertFromPakistanTimeToUTC($timeString)
+{
   $dateTime = new DateTime($timeString, new DateTimeZone('Asia/Karachi'));
   $dateTime->setTimezone(new DateTimeZone('UTC'));
   return $dateTime->format('Y-m-d H:i:s');
+}
+
+// Gives month number 
+function getMonth($dateString)
+{
+  $date = DateTime::createFromFormat('Y-m-d H:i:s', $dateString);
+  if ($date === false) {
+    return "Invalid date format";
+  }
+  // Assuming $date is a DateTime object
+  $monthNumber = $date->format('n'); // Single-digit month number (1-12)
+  return $monthNumber;
+
+}
+// For getting only month and year
+function getMonthAndYear($dateString){
+  $date = DateTime::createFromFormat('Y-m-d H:i:s', $dateString);
+  if ($date === false) {
+    return "Invalid date format";
+  }
+  // Assuming $date is a DateTime object
+  $monthNumber = $date->format('F Y'); // Single-digit month number (1-12)
+  return $monthNumber;
+}
+class helpers
+{
+    private $previousValue;
+
+    public function __construct()
+    {
+        $this->previousValue = null; // Initialize the previous value
+    }
+
+    public function compareValue($currentValue)
+    {
+        if ($this->previousValue !== null) {
+            if ($currentValue === $this->previousValue) {
+                // echo "The passed value ($currentValue) is the same as the previously passed value.\n";
+                return true;
+            } else {
+                // echo "The passed value ($currentValue) is different from the previously passed value ($this->previousValue).\n";
+                $this->previousValue = $currentValue;
+                return false;
+            }
+        } else {
+            // echo "This is the first value being passed: $currentValue\n";
+        }
+
+        // Update the previous value
+        $this->previousValue = $currentValue;
+    }
 }

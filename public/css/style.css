@@ -1,6 +1,9 @@
 body{
   position: relative;
 }
+.dark{
+  background-color: black;
+}
 .loading-overlay{
   position: fixed;
   top: 0;
@@ -36,4 +39,25 @@ font-weight: bold;
 }
 .loading-save{
   background-color: lightgray;
+}
+
+.month-name{
+  font-size: 40px;
+  text-wrap: nowrap;
+  margin: 0 10px;
+}
+.month-flex{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+.month-line{
+    width: 98%;
+    height: 1px;
+    border-bottom: 1px solid;
+}
+.cursor-pointer{
+  cursor: pointer;
 }
