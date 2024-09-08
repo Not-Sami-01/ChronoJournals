@@ -15,7 +15,7 @@ class Login extends Component
             'username' => 'required',
             'password' => 'required'
         ]);
-        $username = strtolower($this->username);
+        $username = trim(strtolower($this->username));
         $user = AppUsers::where('username', '=', $username)->first();
         if($user && md5($this->password) == $user->password){
             session()->put('username', $username);

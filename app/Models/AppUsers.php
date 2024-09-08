@@ -14,15 +14,10 @@ class AppUsers extends Model
     protected $primary_key = '_id';
     public function setUsernameAttribute($value)
     {
-        $this->attributes['username'] = strtolower($value);
+        $this->attributes['username'] = trim(strtolower($value));
     }
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = md5($value);
     }
-    public function getUsernameAttribute($value)
-    {
-        return strtolower($value);
-    }
-
 }

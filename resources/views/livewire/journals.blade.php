@@ -74,11 +74,11 @@
         </div>
 
         @if (request()->is('recyclebin'))
-          <div class="card-body">
+          <div class="card-body cursor-pointer">
             <p class="card-text fs-6">{!! filterString(substr($journal->content, 0, 300)) !!}...</p>
           </div>
         @else
-          <div class="card-body" wire:click='editJournal(@json($journal->_id))'>
+          <div class="card-body cursor-pointer" wire:click='editJournal(@json($journal->_id))'>
             <p class="card-text fs-6">{!! filterString(substr($journal->content, 0, 300)) !!}...</p>
           </div>
         @endif
