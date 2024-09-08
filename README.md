@@ -1,12 +1,27 @@
 # ChronoJournal App
 This app uses CKeditor as a WTSIWYG editor
 # To use this app follow are some steps:
+
 # Step 1 -
-Run this command on your console
+Create a .env file and copy the .env.example data to .env and change the encryption key to your secret key and add your database url in DB_URI. Now
+
+# Step 2 -
+Run this command on your terminal
 ```console
 php artisan serve
 ```
-# Step 2 -
+Or if you want to host it to your Wifi network, run this command in your terminal
+```console
+ipconfig
+```
+Here you will see something like this:
+IPv4 Address. . . . . . . . . . . : 192.xxx.x.xxx
+Copy the ip address and run this command on the terminal
+```console
+php artisan serve --host=YOUR_IP_ADDRESS_HERE
+```
+
+# Step 3 -
 Go to the link: 
 http://127.0.0.1:8000/
 Here you can see the main page
