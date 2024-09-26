@@ -126,4 +126,11 @@
   </div>
 
   <script src="{{ asset('/js/activityDetector.js') }}"></script>
+  <script>
+  $(document).ready(function() {
+    $('.card-body img').each(function() {
+        $(this).replaceWith('<div>***Image</div>'); // Replace the image with the div
+    });
+});
+</script>
 </div>

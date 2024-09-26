@@ -37,6 +37,7 @@ font-weight: bold;
   padding: 0;
   margin: 0;
 }
+
 .loading-save{
   background-color: lightgray;
 }
@@ -60,4 +61,34 @@ font-weight: bold;
 }
 .cursor-pointer{
   cursor: pointer;
+}
+.my-modal-overlay{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  /* opacity: 0.3; */
+  overflow: hidden;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.my-modal-body{
+  width: 600px;
+  height: max-content;
+  padding: 1.5rem;
+  border-radius: 3px;
+  background-color: white;
+}
+.my-modal-content{
+  box-shadow: 1px 1px 5px black;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.disable-scroll{
+  overflow: hidden;
 }

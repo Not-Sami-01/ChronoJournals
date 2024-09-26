@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Middleware\AuthMiddleware;
 use App\Livewire\Admin;
+use App\Livewire\FileDownload;
 use App\Livewire\Home;
 use App\Livewire\Journal;
 use App\Livewire\Login;
@@ -25,5 +27,6 @@ Route::get('/journal/{id?}', Journal::class)->middleware(AuthMiddleware::class)-
 Route::get('/recyclebin', MyRecycleBin::class)->middleware(AuthMiddleware::class);
 Route::get('/', Home::class)->middleware(AuthMiddleware::class);
 Route::get('/all', Home::class)->middleware(AuthMiddleware::class);
+Route::get('/download', action: FileDownload::class)->middleware(AuthMiddleware::class)->name('download');
 
 // Route::get('/admin', Admin::class);

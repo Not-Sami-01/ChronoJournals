@@ -162,3 +162,18 @@ class helpers
         $this->previousValue = $currentValue;
     }
 }
+
+// Json Prettifier
+
+  function prettyPrintJson($jsonString) {
+      // Decode the JSON string
+      $decodedJson = json_decode($jsonString, true);
+  
+      // Check for JSON errors
+      if (json_last_error() !== JSON_ERROR_NONE) {
+          return 'Invalid JSON: ' . json_last_error_msg();
+      }
+  
+      // Encode back to JSON with pretty print
+      return json_encode($decodedJson, JSON_PRETTY_PRINT);
+  }

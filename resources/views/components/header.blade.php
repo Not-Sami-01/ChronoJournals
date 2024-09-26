@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
     <div class="container-fluid">
-      <a wire:navigate class="navbar-brand" href="#">Navbar</a>
+      <a wire:navigate class="navbar-brand" href="#">ChronoJournal</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -24,6 +24,9 @@
             </li>
           @endif
         </ul>
+        @if (checkLogin())
+        <button class="btn btn-primary mx-1 btn-sm" id="export-data" wire:click='downloadDataModalToggle'>Export data</button>
+        @endif
         @if (checkLogin() || Request::url() === url('/admin'))
           <button wire:loading.attr='disabled' id="logoutBtn" wire:click='logout' class="btn btn-danger mx-1 btn-sm"
             type="button">Logout</button>
@@ -45,4 +48,39 @@
       </div>
     </div>
   </nav>
+  <script>
+    $('#export-data').on('click', () => {
+
+    })
+  </script>
+  @if ($downloadModal)
+    <div class="my-modal-overlay">
+      <form class="my-modal-body" wire:submit='exportData'>
+        {{-- <div class="my-modal-content"> --}}
+        <h4>Export Data</h2>
+          <hr>
+          <p class="mb-0">Choose your data format:</p>
+          <div class="px-1">
+            <div class="form-check">
+              <input class="form-check-input" wire:model='downloadMethod'  type="radio" name="exampleRadios" id="exampleRadios1" value="1"
+                checked>
+              <label class="form-check-label" for="exampleRadios1">
+                Json File
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" wire:model='downloadMethod' type="radio" name="exampleRadios" id="exampleRadios2" value="2">
+              <label class="form-check-label" for="exampleRadios2">
+                Html File
+              </label>
+            </div>
+          </div>
+          <hr>
+          <div class="buttons d-flex justify-content-end">
+            <button class="btn-outline-danger mx-1 btn btn-sm" wire:click='downloadDataModalToggle' wire:loading.class='disabled'>Cancel</button>
+            <button class="btn-success mx-1 btn btn-sm" type="submit" wire:loading.class='disabled'>Export</button>
+          </div>
+      </div>
+    </div>
+  @endif
 </header>
